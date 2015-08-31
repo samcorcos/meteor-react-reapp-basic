@@ -1,0 +1,10 @@
+{
+  "transforms": {
+    "exposify": {
+      "global": true,
+      "expose": {
+        "reapp": "Reapp"
+      }
+    }
+  }
+}

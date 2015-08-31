@@ -1,22 +1,37 @@
 Package.describe({
   name: 'samcorcos:reapp',
   version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
+  summary: 'Reapp.io for Meteor',
+  git: 'https://github.com/samcorcos/reapp',
   documentation: 'README.md'
 });
 
+Npm.depends({
+  'exposify': '0.4.3',
+  'reapp': '0.8.28'
+})
+
 Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
-  api.addFiles('reapp.js');
+  api.use(['react@0.1.7', 'cosmos:browserify@0.5.0']);
+  api.imply(['react@0.1.7']);
+
+  api.addFiles([
+    'app.browserify.options.json',
+    'app.browserify.js'
+  ])
+
+  api.export('Reapp')
 });
 
-Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('samcorcos:reapp');
-  api.addFiles('reapp-tests.js');
-});
+//
+// Package.onUse(function(api) {
+//   api.use(['react@0.1.7', 'cosmos:browserify@0.5.0']);
+//   api.imply(['react@0.1.7']);
+//
+//   api.add_files([
+//     'react-router.browserify.options.json',
+//     'react-router.browserify.js'
+//   ]);
+//
+//   api.export('ReactRouter');
+// });
